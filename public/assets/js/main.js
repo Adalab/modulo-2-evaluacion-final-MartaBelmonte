@@ -19,3 +19,5 @@ fetch('api.disneyapi.dev/character?pageSize=50'
     .catch(error =>{
         console.error('Error:', error);
     }))
+
+//# sourceMappingURL=main.js.map
