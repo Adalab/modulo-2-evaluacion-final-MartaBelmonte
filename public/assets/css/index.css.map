@@ -1,1 +1,0 @@
-{"version":3,"sources":["core/_reset.scss","layout/_header.scss"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,SAAS;EACT,UAAU,EAAA;;ACHZ;EACI,YAAY,EAAA","file":"index.css","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n",".page_header {\n    width: 100px;\n}\n"]}
