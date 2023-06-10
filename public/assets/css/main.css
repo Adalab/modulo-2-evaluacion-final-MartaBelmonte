@@ -98,16 +98,18 @@ body {
   color: #999; }
 
 .main {
-  background-color: yellow;
+  background-color: #f2f2ec;
   padding: 50px 20px;
   text-align: center; }
 
-.characters-list {
+.js_character-list {
+  border: 2px solid blue;
+  padding: 20px; }
+
+.js_ul_list {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  border: 2px solid red;
-  gap: 20px; }
+  gap: 30px; }
 
 .main__list {
   padding-left: 2rem;

@@ -1,13 +1,17 @@
 .main {
-    background-color: yellow;
+    background-color: rgb(242, 242, 236);
     padding: 50px 20px;
     text-align: center;
+
 }
 
-.characters-list {
+.js_character-list {
+    border: 2px solid blue;
+    padding: 20px;
+}
+
+.js_ul_list {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    border: 2px solid red;
-    gap: 20px;
+    gap: 30px;
 }
