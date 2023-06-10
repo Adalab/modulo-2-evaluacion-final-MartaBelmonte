@@ -1,7 +1,7 @@
 'use strict';
 
 let listCharactersApi = [];
-let listCharacterFavourite = [];
+let listCharacterFavourite = []; //array donde guardo el elemento clickado
 const ulElement = document.querySelector('.js_ul_list');
 const url = 'https://api.disneyapi.dev/character?pageSize=50';
 
@@ -36,3 +36,10 @@ function renderCharacter(character) {
 }
 
 //Añadir a favoritos
+function handleClick(event) {
+  const id = event.currentTarget.id // quiero que se tenga en cuenta ese ID y se ponga en favoritos
+ //find (busca dentro de un array el primer elemento que cumpla con la condicion que pides y te devuelve el contenido)
+ const selectedCharacter = listCharactersApi.find((item) => item.id === id );
+ console.log(selectedCharacter);
+
+}
