@@ -1,0 +1,13 @@
+.main {
+    background-color: yellow;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.characters-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid red;
+    gap: 20px;
+}

@@ -1,7 +1,9 @@
+/*
 .header {
   display: flex;
+  height: 300px;
   background-image: url(../images/disney-img.jpeg);
-  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
   z-index: 2;
 }
@@ -10,15 +12,13 @@
   background-color: white;
   padding: 20px;
   display: flex;
-  flex-direction: row;
   height: 70px;
   width: 550px;
   justify-content: space-between;
-  align-items: center;
   position: relative;
-  z-index: 2;
-  margin-top: 200px;
-  margin-left: 43px;
+  z-index: 1;
+  //margin-top: 260px;
+ margin: 265px 0 0 0;
 }
 
 .searchbox {
@@ -28,6 +28,41 @@
 }
 
 .searchbutton{
+  border: 2px solid blue;
+  width: 70px;
+  height: 30px;
+}
+*/
+
+.header {
+  display: flex;
+  height: 300px;
+  background-image: url(../images/disney-img.jpeg);
+  background-size: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.form {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  height: 70px;
+  width: 550px;
+  justify-content: space-between;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(265px);
+  z-index: 1;
+}
+
+.searchbox {
+  width: 60%;
+  height: 30px;
+  border: 2px solid blue;
+}
+
+.searchbutton {
   border: 2px solid blue;
   width: 70px;
   height: 30px;

@@ -24,10 +24,46 @@ body {
   background-color: #f3f4f5;
   font-family: "Roboto", sans-serif; }
 
+/*
 .header {
   display: flex;
+  height: 300px;
   background-image: url(../images/disney-img.jpeg);
-  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.form {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  height: 70px;
+  width: 550px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  //margin-top: 260px;
+ margin: 265px 0 0 0;
+}
+
+.searchbox {
+  width: 60%;
+  height: 30px;
+  border: 2px solid blue;
+}
+
+.searchbutton{
+  border: 2px solid blue;
+  width: 70px;
+  height: 30px;
+}
+*/
+.header {
+  display: flex;
+  height: 300px;
+  background-image: url(../images/disney-img.jpeg);
+  background-size: cover;
   position: relative;
   z-index: 2; }
 
@@ -35,15 +71,13 @@ body {
   background-color: white;
   padding: 20px;
   display: flex;
-  flex-direction: row;
   height: 70px;
   width: 550px;
   justify-content: space-between;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  margin-top: 200px;
-  margin-left: 43px; }
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(265px);
+  z-index: 1; }
 
 .searchbox {
   width: 60%;
@@ -62,6 +96,18 @@ body {
   width: 100vw;
   padding: 1rem;
   color: #999; }
+
+.main {
+  background-color: yellow;
+  padding: 50px 20px;
+  text-align: center; }
+
+.characters-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 2px solid red;
+  gap: 20px; }
 
 .main__list {
   padding-left: 2rem;
