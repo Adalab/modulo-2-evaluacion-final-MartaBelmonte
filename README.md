@@ -1,4 +1,4 @@
-JavaScript module final exercise: Disney characters series finder.
+JavaScript module final exercise: Disney characters finder.
 This exercise has been done as part of the final exam of the JavaScript module in Adalab.
 
 Project description.
