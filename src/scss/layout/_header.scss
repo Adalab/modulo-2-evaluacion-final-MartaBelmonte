@@ -7,7 +7,7 @@
   z-index: 2;
 
   &-form {
-    background-color: white;
+    background-color: $white;
     padding: 20px;
     display: flex;
     height: 70px;
@@ -21,21 +21,20 @@
     &__searchbox {
       width: 60%;
       height: 30px;
-      border: 2px solid blue;
+      border: 2px solid $blue-cards;
       cursor: pointer;
     }
 
     &__searchbutton {
-      border: 2px solid blue;
+      border: 2px solid $blue-cards;
       width: 70px;
       height: 30px;
       cursor: pointer;
     }
   }
 }
-/*
-.header-form__searchbox:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-  width: 350px;
-  height: 35px;
-}*/
+
+
+.header-form__searchbutton:hover {
+  background: $background-search;
+}

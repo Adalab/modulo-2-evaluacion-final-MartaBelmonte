@@ -2,6 +2,11 @@
     background-color: rgb(242, 242, 236);
     padding: 50px 20px;
     text-align: center;
+    font-weight: 600 ;
+}
+
+.names {
+    font-weight: 600;
 }
 
 .character, .favorites {
@@ -9,6 +14,8 @@
     animation-duration: 3s;
     animation-name: slidein;
     margin: 40px;
+    font-family: $font-titles;
+    font-size: 30px;
 }
 
 @keyframes slidein {

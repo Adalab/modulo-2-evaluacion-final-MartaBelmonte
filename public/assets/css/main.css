@@ -53,12 +53,9 @@ body {
       height: 30px;
       cursor: pointer; }
 
-/*
-.header-form__searchbox:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-  width: 350px;
-  height: 35px;
-}*/
+.header-form__searchbutton:hover {
+  background: #c3c5f8; }
+
 .page__footer {
   position: fixed;
   left: 0;
@@ -70,13 +67,19 @@ body {
 .main {
   background-color: #f2f2ec;
   padding: 50px 20px;
-  text-align: center; }
+  text-align: center;
+  font-weight: 600; }
+
+.names {
+  font-weight: 600; }
 
 .character, .favorites {
   text-transform: uppercase;
   animation-duration: 3s;
   animation-name: slidein;
-  margin: 40px; }
+  margin: 40px;
+  font-family: "Signika", sans-serif;
+  font-size: 30px; }
 
 @keyframes slidein {
   from {

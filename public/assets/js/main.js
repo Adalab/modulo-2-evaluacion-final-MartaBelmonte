@@ -52,7 +52,7 @@ function renderFavoriteCharacter(character) {
   const html = `
     <div class="characters-container">
       <div class="characters js_favorite-character" id="${character.id}">
-        <p>Name: ${character.name}</p>
+        <p class="names"> Name: ${character.name}</p>
         <img src="${character.imageUrl}" alt="${character.name}" />
       </div>
     </div>
@@ -119,5 +119,6 @@ function addRemoveIdIntoLocalStorage(id) {
     localStorage.setItem('characterIds', JSON.stringify(ids));
   }
 }
+
 
 //# sourceMappingURL=main.js.map
