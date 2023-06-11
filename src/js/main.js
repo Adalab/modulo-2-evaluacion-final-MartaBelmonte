@@ -34,10 +34,10 @@ function addEventCharacter() {
 }
 
 function renderCharacter(character) { 
-  const isFavorite = listCharacterFavorite.some((item) => item.id === character._id);
+  const isFavorite = listCharacterFavorite.some((item) => item._id === character._id);
   const favoriteClass = isFavorite ? 'favorite' : '';
   const html = `
-    <div class="characters js_character-list ${favoriteClass}" id="${character.id}">
+    <div class="characters js_character-list ${favoriteClass}" id="${character._id}">
       <p>Name: ${character.name}</p>
       <img src="${character.imageUrl}" alt="${character.name}" />
     </div>
@@ -46,9 +46,12 @@ function renderCharacter(character) {
 }
 
 function renderFavoriteCharacter(character) { 
+   if (!character) {
+    return ''; 
+  }
   const html = `
     <div class="characters-container">
-      <div class="characters js_favorite-character" id="${character._id}">
+      <div class="characters js_favorite-character" id="${character.id}">
         <p>Name: ${character.name}</p>
         <img src="${character.imageUrl}" alt="${character.name}" />
       </div>
@@ -59,9 +62,10 @@ function renderFavoriteCharacter(character) {
 
 function handleClick(event) {
   const id = event.currentTarget.id;
-  const selectedCharacter = listCharactersApi.find((item) => item.id === id);
-  const indexCharacter = listCharacterFavorite.findIndex((item) => item.id === id);
-
+  const selectedCharacter = listCharactersApi.find((item) => item._id === id);
+  console.log(selectedCharacter);
+  const indexCharacter = listCharacterFavorite.findIndex((item) => item._id === id);
+  
   if (indexCharacter === -1) {
     listCharacterFavorite.push(selectedCharacter);
     event.currentTarget.classList.add('favorite');
