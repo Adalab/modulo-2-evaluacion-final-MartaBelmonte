@@ -65,18 +65,25 @@ function handleClick(event) {
   if (indexCharacter === -1) {
     listCharacterFavorite.push(selectedCharacter);
     event.currentTarget.classList.add('favorite');
+    moveCharacterToFavorites(event.currentTarget); // Mover el personaje al contenedor de favoritos
   } else {
     listCharacterFavorite.splice(indexCharacter, 1);
     event.currentTarget.classList.remove('favorite');
+    removeCharacterFromFavorites(id); // Eliminar el personaje del contenedor de favoritos
   }
 
-  renderCharacterList(listCharactersApi);
-  moveToFavorites();
+  renderFavoriteList();
 }
 
-function moveToFavorites() {
-  ulFavorites.innerHTML = '';
-  for (const character of listCharacterFavorite) {
-    ulFavorites.innerHTML += renderFavoriteCharacter(character);
+function moveCharacterToFavorites(characterElement) {
+  const selectedFavList = document.querySelector('.js_selected-favlist');
+  selectedFavList.appendChild(characterElement);
+}
+
+function removeCharacterFromFavorites(id) {
+  const selectedFavList = document.querySelector('.js_selected-favlist');
+  const characterElement = selectedFavList.querySelector(`[id="${id}"]`);
+  if (characterElement) {
+    characterElement.remove();
   }
 }
