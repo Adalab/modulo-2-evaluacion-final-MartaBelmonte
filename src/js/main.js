@@ -34,7 +34,7 @@ function addEventCharacter() {
 }
 
 function renderCharacter(character) { 
-  const isFavorite = listCharacterFavorite.some((item) => item.id === character.id);
+  const isFavorite = listCharacterFavorite.some((item) => item.id === character._id);
   const favoriteClass = isFavorite ? 'favorite' : '';
   const html = `
     <div class="characters js_character-list ${favoriteClass}" id="${character.id}">
@@ -48,7 +48,7 @@ function renderCharacter(character) {
 function renderFavoriteCharacter(character) { 
   const html = `
     <div class="characters-container">
-      <div class="characters js_favorite-character" id="${character.id}">
+      <div class="characters js_favorite-character" id="${character._id}">
         <p>Name: ${character.name}</p>
         <img src="${character.imageUrl}" alt="${character.name}" />
       </div>
@@ -103,22 +103,16 @@ function handleClickbtn(event) {
 searchBtn.addEventListener("click", handleClickbtn); // click on search button
 
 
+function addRemoveIdIntoLocalStorage(id) {
+  const ids = JSON.parse(localStorage.getItem('characterIds')) || [];
 
-// function save to localStorage
-
-function setLocalStorage() {
-  const stringifyFavorites = JSON.stringify(listCharacterFavorite);
-  localStorage.setItem("character", stringifyFavorites);
-}
-
-// function to get from localStorage
-
-function getLocalStorage() {
-  const localStorageFavorites = localStorage.getItem("character");
-  if (localStorageFavorites !== null) {
-    listCharacterFavorite = JSON.parse(localStorageFavorites);
+  if (ids.includes(id)) {
+    // Si el ID está incluido, se elimina
+    const newIds = ids.filter((item) => item !== id);
+    localStorage.setItem('characterIds', JSON.stringify(newIds));
+  } else {
+    // Si el ID no está incluido, se agrega
+    ids.push(id);
+    localStorage.setItem('characterIds', JSON.stringify(ids));
   }
-  renderFavoriteCharacter();
 }
-
-getLocalStorage();
