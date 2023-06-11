@@ -5,6 +5,7 @@ let listCharacterFavorite = [];
 const ulElement = document.querySelector('.js_ul_list');
 const url = 'https://api.disneyapi.dev/character?pageSize=50';
 const ulFavorites = document.querySelector('.js_ul_favlist');
+const favoritesSection = document.querySelector('.js_favorites-section');
 
 fetch(url)
   .then(response => response.json())
@@ -33,10 +34,24 @@ function addEventCharacter() {
 }
 
 function renderCharacter(character) { 
+  const isFavorite = listCharacterFavorite.some((item) => item.id === character.id);
+  const favoriteClass = isFavorite ? 'favorite' : '';
   const html = `
-    <div class="characters js_character-list" id="${character.id}">
+    <div class="characters js_character-list ${favoriteClass}" id="${character.id}">
       <p>Name: ${character.name}</p>
       <img src="${character.imageUrl}" alt="${character.name}" />
+    </div>
+  `;
+  return html;
+}
+
+function renderFavoriteCharacter(character) { 
+  const html = `
+    <div class="characters-container">
+      <div class="characters js_favorite-character" id="${character.id}">
+        <p>Name: ${character.name}</p>
+        <img src="${character.imageUrl}" alt="${character.name}" />
+      </div>
     </div>
   `;
   return html;
@@ -55,13 +70,14 @@ function handleClick(event) {
     event.currentTarget.classList.remove('favorite');
   }
 
-  renderFavoriteList();
+  renderCharacterList(listCharactersApi);
+  moveToFavorites();
 }
 
-function renderFavoriteList() {
+function moveToFavorites() {
   ulFavorites.innerHTML = '';
-  for (const fav of listCharacterFavorite){
-    ulFavorites.innerHTML += renderCharacter(fav);
+  for (const character of listCharacterFavorite) {
+    ulFavorites.innerHTML += renderFavoriteCharacter(character);
   }
 }
 
