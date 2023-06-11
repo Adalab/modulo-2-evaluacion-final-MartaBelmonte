@@ -45,13 +45,20 @@ body {
     .header-form__searchbox {
       width: 60%;
       height: 30px;
-      border: 2px solid blue; }
+      border: 2px solid blue;
+      cursor: pointer; }
     .header-form__searchbutton {
       border: 2px solid blue;
       width: 70px;
       height: 30px;
       cursor: pointer; }
 
+/*
+.header-form__searchbox:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  width: 350px;
+  height: 35px;
+}*/
 .page__footer {
   position: fixed;
   left: 0;
@@ -64,6 +71,20 @@ body {
   background-color: #f2f2ec;
   padding: 50px 20px;
   text-align: center; }
+
+.character, .favorites {
+  text-transform: uppercase;
+  animation-duration: 3s;
+  animation-name: slidein;
+  margin: 40px; }
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; }
+  to {
+    margin-left: 0%;
+    width: 100%; } }
 
 .js_character-list {
   border: 2px solid blue;
