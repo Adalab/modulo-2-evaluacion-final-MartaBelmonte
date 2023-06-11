@@ -62,9 +62,8 @@ function renderFavoriteCharacter(character) {
 
 function handleClick(event) {
   const id = event.currentTarget.id;
-  const selectedCharacter = listCharactersApi.find((item) => item._id === id);
-  console.log(selectedCharacter);
-  const indexCharacter = listCharacterFavorite.findIndex((item) => item._id === id);
+  const selectedCharacter = listCharactersApi.find((item) => item._id === parseInt(id));
+  const indexCharacter = listCharacterFavorite.findIndex((item) => item._id === parseInt(id));
   
   if (indexCharacter === -1) {
     listCharacterFavorite.push(selectedCharacter);

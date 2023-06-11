@@ -96,13 +96,11 @@ body {
   flex-wrap: wrap;
   gap: 30px; }
 
-.js_ul_favlist {
-  background-color: red;
-  color: yellow; }
-
 .js_character-list.favorite {
   background-color: yellow;
-  color: red; }
+  color: red;
+  width: 300px;
+  margin: 30px; }
 
 .js_favorites-section.show {
   transform: translateX(0); }
