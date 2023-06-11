@@ -5,7 +5,6 @@ let listCharacterFavorite = [];
 const ulElement = document.querySelector('.js_ul_list');
 const url = 'https://api.disneyapi.dev/character?pageSize=50';
 const ulFavorites = document.querySelector('.js_ul_favlist');
-const favoritesSection = document.querySelector('.js_favorites-section');
 const searchBox = document.querySelector(".js-search-box");
 const searchBtn = document.querySelector(".js-search-button");
 
@@ -14,7 +13,6 @@ fetch(url)
   .then(data => {
     listCharactersApi = data.data;
     renderCharacterList(listCharactersApi);
-    localStorage.setItem('character',  JSON.stringify(listCharacterFavorite));
   })
   .catch(error => {
     console.error('Error', error);
@@ -31,7 +29,7 @@ function renderCharacterList(listData) {
 function addEventCharacter() {
   const divElementList = document.querySelectorAll('.js_character-list');
   for (const div of divElementList) {
-    div.addEventListener('click', handleClick);
+    div.addEventListener('click', handleClick); 
   }
 }
 
@@ -74,7 +72,7 @@ function handleClick(event) {
     removeCharacterFromFavorites(id); // Eliminar el personaje del contenedor de favoritos
   }
 
-  renderFavoriteList();
+  renderFavoriteCharacter();
 }
 
 function moveCharacterToFavorites(characterElement) {
@@ -95,7 +93,6 @@ function handleClickbtn(event) {
 //filter for searching a character
   event.preventDefault();
   const searchValue = searchBox.value.toLowerCase();
-
   const characterFilter = listCharactersApi.filter((character) =>
     character.name.toLowerCase().includes(searchValue)
   );
@@ -104,3 +101,24 @@ function handleClickbtn(event) {
 
 //Events
 searchBtn.addEventListener("click", handleClickbtn); // click on search button
+
+
+
+// function save to localStorage
+
+function setLocalStorage() {
+  const stringifyFavorites = JSON.stringify(listCharacterFavorite);
+  localStorage.setItem("character", stringifyFavorites);
+}
+
+// function to get from localStorage
+
+function getLocalStorage() {
+  const localStorageFavorites = localStorage.getItem("character");
+  if (localStorageFavorites !== null) {
+    listCharacterFavorite = JSON.parse(localStorageFavorites);
+  }
+  renderFavoriteCharacter();
+}
+
+getLocalStorage();
