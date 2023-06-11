@@ -6,6 +6,8 @@ const ulElement = document.querySelector('.js_ul_list');
 const url = 'https://api.disneyapi.dev/character?pageSize=50';
 const ulFavorites = document.querySelector('.js_ul_favlist');
 const favoritesSection = document.querySelector('.js_favorites-section');
+const searchBox = document.querySelector(".js-search-box");
+const searchBtn = document.querySelector(".js-search-button");
 
 fetch(url)
   .then(response => response.json())
@@ -88,4 +90,18 @@ function removeCharacterFromFavorites(id) {
   }
 }
 
+//buscar personaje + botón
+function handleClickbtn(event) {
+//filter for searching a character
+  event.preventDefault();
+  const searchValue = searchBox.value.toLowerCase();
+
+  const characterFilter = listCharactersApi.filter((character) =>
+    character.name.toLowerCase().includes(searchValue)
+  );
+  renderCharacterList(characterFilter);
+}
+
+//Events
+searchBtn.addEventListener("click", handleClickbtn); // click on search button
 //# sourceMappingURL=main.js.map
