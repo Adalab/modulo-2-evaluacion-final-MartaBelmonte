@@ -87,7 +87,8 @@ body {
 .searchbutton {
   border: 2px solid blue;
   width: 70px;
-  height: 30px; }
+  height: 30px;
+  cursor: pointer; }
 
 .page__footer {
   position: fixed;
@@ -104,12 +105,24 @@ body {
 
 .js_character-list {
   border: 2px solid blue;
-  padding: 20px; }
+  padding: 20px;
+  cursor: pointer; }
 
 .js_ul_list {
   display: flex;
   flex-wrap: wrap;
   gap: 30px; }
+
+.js_ul_favlist {
+  background-color: red;
+  color: yellow; }
+
+.js_character-list.favorite {
+  background-color: yellow;
+  color: red; }
+
+.favorites {
+  background-color: purple; }
 
 .main__list {
   padding-left: 2rem;

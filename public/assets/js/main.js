@@ -1,24 +1,23 @@
 'use strict';
 
 let listCharactersApi = [];
-let listCharacterFavourite = []; //array donde guardo el elemento clickado
+let listCharacterFavorite = [];
 const ulElement = document.querySelector('.js_ul_list');
 const url = 'https://api.disneyapi.dev/character?pageSize=50';
-const ulFavourites = document.querySelector('.js_ul_favlist');
+const ulFavorites = document.querySelector('.js_ul_favlist');
 
-//Obtener el array de personajes desde el API con fetch()
 fetch(url)
   .then(response => response.json())
   .then(data => {
-  listCharactersApi = data.data;
-  renderCharacterList(listCharactersApi);
- 
+    listCharactersApi = data.data;
+    renderCharacterList(listCharactersApi);
+    localStorage.setItem('character',  JSON.stringify(listCharacterFavorite));
   })
   .catch(error => {
     console.error('Error', error);
 });
 
-function renderCharacterList (listData) {
+function renderCharacterList(listData) {
   ulElement.innerHTML = '';
   for (const character of listData) {
     ulElement.innerHTML += renderCharacter(character);
@@ -26,7 +25,7 @@ function renderCharacterList (listData) {
   addEventCharacter();
 }
 
-function addEventCharacter () {
+function addEventCharacter() {
   const divElementList = document.querySelectorAll('.js_character-list');
   for (const div of divElementList) {
     div.addEventListener('click', handleClick);
@@ -34,40 +33,36 @@ function addEventCharacter () {
 }
 
 function renderCharacter(character) { 
-    const html = `
-      <div id="${character.id}" class="characters js_character-list">
+  const html = `
+    <div class="characters js_character-list" id="${character.id}">
       <p>Name: ${character.name}</p>
       <img src="${character.imageUrl}" alt="${character.name}" />
     </div>
-    `;
+  `;
   return html;
 }
 
-//Añadir a favoritos
 function handleClick(event) {
-  const id = event.currentTarget.id // quiero que se tenga en cuenta ese ID y se ponga en favoritos
- //find (busca dentro de un array el primer elemento que cumpla con la condicion que pides y te devuelve el contenido)
- const selectedCharacter = listCharactersApi.find((item) => item.id === id );
- 
- //findIndex te devuelve la posicion
- const indexCharacter = listCharacterFavourite.findIndex((item) => item.id === id ); //busco en que posicion se encuentra dentro del array de favoritos
- 
- if (findIndex === -1) {
- listCharacterFavourite.push(selectedCharacter);// si da -1 es porque no esta en el array de fav y entonces hay que meterlo (push)
-} else {
-  listCharacterFavourite.splice(indexCharacter, 1 );
+  const id = event.currentTarget.id;
+  const selectedCharacter = listCharactersApi.find((item) => item.id === id);
+  const indexCharacter = listCharacterFavorite.findIndex((item) => item.id === id);
+
+  if (indexCharacter === -1) {
+    listCharacterFavorite.push(selectedCharacter);
+    event.currentTarget.classList.add('favorite');
+  } else {
+    listCharacterFavorite.splice(indexCharacter, 1);
+    event.currentTarget.classList.remove('favorite');
+  }
+
+  renderFavoriteList();
 }
 
-renderFavouriteList();
-}
-
-//pintar en la pagina el nuevo array de favoritos
-
-function renderFavouriteList () {
- ulFavourites.innerHTML = '';
-  for (const fav of listCharacterFavourite)(
-    ulFavourites.innerHTML += renderCharacter(fav)
-  )
+function renderFavoriteList() {
+  ulFavorites.innerHTML = '';
+  for (const fav of listCharacterFavorite){
+    ulFavorites.innerHTML += renderCharacter(fav);
+  }
 }
 
 //# sourceMappingURL=main.js.map
