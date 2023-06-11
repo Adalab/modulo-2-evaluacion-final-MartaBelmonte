@@ -58,11 +58,13 @@ body {
 
 .page__footer {
   position: fixed;
-  left: 0;
   bottom: 0;
-  width: 100vw;
-  padding: 1rem;
-  color: #999; }
+  width: 100%;
+  background-color: #c3c5f8;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-style: italic; }
 
 .main {
   background-color: #f2f2ec;
