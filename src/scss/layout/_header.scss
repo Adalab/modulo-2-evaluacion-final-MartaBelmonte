@@ -6,6 +6,13 @@
   position: relative;
   z-index: 2;
 
+  &-welcomeh1{
+  font-family: $font-welcome;
+  font-size: 80px;
+  color: $white;
+  margin: auto;
+  }
+
   &-form {
     background-color: $white;
     padding: 20px;
@@ -33,5 +40,3 @@
     }
   }
 }
-
-

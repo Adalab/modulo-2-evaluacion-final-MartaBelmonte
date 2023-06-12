@@ -13,8 +13,13 @@
   background-size: cover;
   position: relative;
   z-index: 2; }
+  .header-welcomeh1 {
+    font-family: "Dancing Script", cursive;
+    font-size: 80px;
+    color: #ffffff;
+    margin: auto; }
   .header-form {
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
     display: flex;
     height: 70px;
