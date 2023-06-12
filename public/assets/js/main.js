@@ -82,7 +82,14 @@ function handleClick(event) {
 
 function moveCharacterToFavorites(characterElement) {
   const selectedFavList = document.querySelector('.js_selected-favlist');
-  selectedFavList.appendChild(characterElement);
+  const selectedCharacterCopy = characterElement.cloneNode(true);
+  const characterId = characterElement.id;
+
+
+  characterElement.classList.add('favorite-original'); // Agregar una clase adicional al personaje en la primera sección
+  characterElement.dataset.originalId = characterId; // Guardar una referencia al personaje original en un atributo personalizado
+
+  selectedFavList.appendChild(selectedCharacterCopy);
 }
 
 function removeCharacterFromFavorites(id) {
@@ -93,21 +100,7 @@ function removeCharacterFromFavorites(id) {
   }
 }
 
-//buscar personaje + botón
-function handleClickbtn(event) {
-//filter for searching a character
-  event.preventDefault();
-  const searchValue = searchBox.value.toLowerCase();
-  const characterFilter = listCharactersApi.filter((character) =>
-    character.name.toLowerCase().includes(searchValue)
-  );
-  renderCharacterList(characterFilter);
-}
-
-//Events
-searchBtn.addEventListener("click", handleClickbtn); // click on search button
-
-
+//Add to LocalStorage
 function addRemoveIdIntoLocalStorage(id) {
   const ids = JSON.parse(localStorage.getItem('characterIds')) || [];
 
@@ -121,6 +114,22 @@ function addRemoveIdIntoLocalStorage(id) {
     localStorage.setItem('characterIds', JSON.stringify(ids));
   }
 }
+
+
+//filter for searching a character
+function handleClickbtn(event) {
+  event.preventDefault();
+  const searchValue = searchBox.value.toLowerCase();
+  const characterFilter = listCharactersApi.filter((character) =>
+    character.name.toLowerCase().includes(searchValue)
+  );
+  renderCharacterList(characterFilter);
+}
+
+//Events
+searchBtn.addEventListener("click", handleClickbtn); 
+
+
 
 
 //# sourceMappingURL=main.js.map
