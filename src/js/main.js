@@ -21,19 +21,45 @@ fetch(url)
 
 
 function renderCharacterList(listData) {
-  ulElement.innerHTML = '';
+  ulElement.innerHTML = ''; // Limpiar antes de renderizar
+
   for (const character of listData) {
-    ulElement.innerHTML += renderCharacter(character);
+    ulElement.innerHTML += renderCharacter(character); // Renderiza cada personaje y lo agrega a ulElement
   }
-  addEventCharacter();
+
+  addEventCharacter(); // Agrega el evento de click
 }
 
+//Agregar eventos click a characters y fav characters:
 function addEventCharacter() {
-  const divElementList = document.querySelectorAll('.js_character-list');
-  for (const div of divElementList) {
-    div.addEventListener('click', handleClick); 
+  const divElementList = document.querySelectorAll('.js_character-list'); //Personajes en la sección characters
+  for (const div of divElementList) {    //Itera en cada div(elemento) de la lista
+    div.addEventListener('click', handleClick);  //click a div, llamada a handleclick
+  }
+
+  const favoriteCharacterList = document.querySelectorAll('.js_favorite-character'); // los personajes en la sección favorites
+  for (const character of favoriteCharacterList) {
+    character.addEventListener('click', removeFavoriteCharacter);
   }
 }
+
+//Eliminar personaje sección favoritos
+function removeFavoriteCharacter(event) {
+  const id = event.currentTarget.id; //guarda el ID cuando se hace click al character
+  const indexCharacter = listCharacterFavorite.findIndex((item) => item._id === parseInt(id)); //busca la posición del ch que tiene el mismo ID que el ch seleccionado.
+
+  if (indexCharacter !== -1) { //si no da -1 (se ha encontrado el ch)
+    listCharacterFavorite.splice(indexCharacter, 1); //elimina el ch de la listCh segun lo que encuentres antes.
+    event.currentTarget.remove(); //elimina el personaje de la sección de fav.
+    removeCharacterFromFavorites(id); //llama a la funcion y le pasa el ID del eliminado de la sección de favs.
+
+    const originalCharacter = document.getElementById(id);
+    if (originalCharacter) {    //si se encuentra elemento original se quita el resaltado de estilos
+      originalCharacter.classList.remove('favorite');
+    }
+  }
+}
+
 
 function renderCharacter(character) { 
   const isFavorite = listCharacterFavorite.some((item) => item._id === character._id);
@@ -131,3 +157,6 @@ function handleClickbtn(event) {
 
 //Events
 searchBtn.addEventListener("click", handleClickbtn); 
+
+
+
