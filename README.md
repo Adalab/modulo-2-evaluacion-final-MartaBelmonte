@@ -1,3 +1,6 @@
+## Prerequisites and installation
+It's enough to click the GitHub link, you do not have to install anything.
+
 ## JavaScript module final exercise: Disney characters finder.
 This exercise has been done as part of the final exam of the JavaScript module in Adalab.
 
