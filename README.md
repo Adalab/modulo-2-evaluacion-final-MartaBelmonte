@@ -12,15 +12,9 @@ To develop this project I have used several branches: main, which contains the s
 The result is published on GitHub Pages.
 
 ## Lenguages
-<<<<<<< HEAD
-HTML
-CSS & SASS
-JAVASCRIPT
-=======
 - HTML
 - CSS & SASS
 - JAVASCRIPT
->>>>>>> 6500a0f7a1f36e3533b108e6dd1e164e1e19d193
 
 ## Tecnhnologies.
 For this we have used the Adalab Web Starter Kit (AWSK), created with node and gulp. Thanks to this, we have been able to divide the code into partial sections because ADWSK includes, for example, the SASS preprocessor and a local server.
