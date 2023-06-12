@@ -89,6 +89,9 @@
 .js_favorites-section.show {
   transform: translateX(0); }
 
+.hidden-section {
+  display: none; }
+
 .main__list {
   padding-left: 2rem;
   padding-bottom: 20px; }

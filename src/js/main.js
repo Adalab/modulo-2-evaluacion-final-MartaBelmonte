@@ -85,18 +85,21 @@ function moveCharacterToFavorites(characterElement) {
   const selectedCharacterCopy = characterElement.cloneNode(true);
   const characterId = characterElement.id;
 
-
   characterElement.classList.add('favorite-original'); // Agregar una clase adicional al personaje en la primera sección
   characterElement.dataset.originalId = characterId; // Guardar una referencia al personaje original en un atributo personalizado
 
   selectedFavList.appendChild(selectedCharacterCopy);
+
+  // Mostrar la sección de favoritos
+  const favoritesSection = document.querySelector('.js_favorites-section');
+  favoritesSection.classList.remove('hidden-section');
 }
 
 function removeCharacterFromFavorites(id) {
-  const selectedFavList = document.querySelector('.js_selected-favlist');
-  const characterElement = selectedFavList.querySelector(`[id="${id}"]`);
-  if (characterElement) {
-    characterElement.remove();
+    // Si la sección de favoritos está vacía: ocultarla 
+  const favoriteCharacters = favoritesSection.querySelectorAll('.js_favorite-character');
+  if (favoriteCharacters.length === 0) {
+    favoritesSection.classList.add('hidden-section');
   }
 }
 
