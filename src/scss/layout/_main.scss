@@ -1,5 +1,5 @@
 .main {
-    background-color: rgb(242, 242, 236);
+    background-color: $background-search;
     padding: 50px 20px;
     text-align: center;
     font-weight: 600 ;
@@ -31,7 +31,8 @@
 }
 
 .js_character-list {
-    border: 2px solid blue;
+    border: 2px solid $blue-cards;
+    border-radius: 10px;
     padding: 20px;
     cursor: pointer;
 }
@@ -43,14 +44,21 @@
 }
 
 .js_character-list.favorite {
-    background-color:yellow;
-    color: red;
+    background-color:$yellow-fav;
+    color: $red-fav;
     width: 300px;
     margin: 30px;
 }
 
 .js_favorites-section.show {
     transform: translateX(0);
+}
+
+.js_selected-favlist {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $background-yellow-fav;
+    border-radius: 25px;
 }
 
 

@@ -131,6 +131,3 @@ function handleClickbtn(event) {
 
 //Events
 searchBtn.addEventListener("click", handleClickbtn); 
-
-
-

@@ -131,8 +131,4 @@ function handleClickbtn(event) {
 
 //Events
 searchBtn.addEventListener("click", handleClickbtn); 
-
-
-
-
 //# sourceMappingURL=main.js.map

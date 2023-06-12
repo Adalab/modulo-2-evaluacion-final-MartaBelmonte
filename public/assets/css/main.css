@@ -4,7 +4,7 @@
   padding: 0; }
 
 .header-form__searchbutton:hover {
-  background: #c3c5f8; }
+  background: #e0e0fb; }
 
 .header {
   display: flex;
@@ -44,14 +44,14 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #c3c5f8;
+  background-color: #7f7ff2;
   padding: 10px;
   text-align: center;
   font-weight: 600;
   font-style: italic; }
 
 .main {
-  background-color: #f2f2ec;
+  background-color: #e0e0fb;
   padding: 50px 20px;
   text-align: center;
   font-weight: 600; }
@@ -77,6 +77,7 @@
 
 .js_character-list {
   border: 2px solid blue;
+  border-radius: 10px;
   padding: 20px;
   cursor: pointer; }
 
@@ -93,6 +94,12 @@
 
 .js_favorites-section.show {
   transform: translateX(0); }
+
+.js_selected-favlist {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fafac4;
+  border-radius: 25px; }
 
 .hidden-section {
   display: none; }
