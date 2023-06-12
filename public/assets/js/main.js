@@ -8,6 +8,7 @@ const ulFavorites = document.querySelector('.js_ul_favlist');
 const searchBox = document.querySelector(".js-search-box");
 const searchBtn = document.querySelector(".js-search-button");
 
+
 fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -17,6 +18,7 @@ fetch(url)
   .catch(error => {
     console.error('Error', error);
 });
+
 
 function renderCharacterList(listData) {
   ulElement.innerHTML = '';
