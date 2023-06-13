@@ -15,6 +15,7 @@ fetch(url)
   .then(data => {  
     listCharactersApi = data.data;  
     renderCharacterList(listCharactersApi); 
+    loadFavoritesFromLocalStorage();
   })
   .catch(error => {
     console.error('Error', error);
@@ -23,14 +24,16 @@ fetch(url)
 
 //Renderizar characters
 function renderCharacterList(listData) {
-  ulElement.innerHTML = ''; 
+  ulElement.innerHTML = '';
 
-  for (const character of listData) { 
-    ulElement.innerHTML += renderCharacter(character); 
+  for (const character of listData) {
+    const isFavorite = isFavoriteCharacter(character._id);
+    ulElement.innerHTML += renderCharacter(character, isFavorite);
   }
 
-  addEventCharacter(); 
+  addEventCharacter();
 }
+
 
 //Agregar eventos click a characters y fav characters:
 function addEventCharacter() {
@@ -137,6 +140,7 @@ function checkIfFavoriteIsEmpty() {
   }
 }
 
+/*
 //Add to LocalStorage
 function addRemoveIdIntoLocalStorage(id) {
   const ids = JSON.parse(localStorage.getItem('characterIds')) || [];  
@@ -150,6 +154,22 @@ function addRemoveIdIntoLocalStorage(id) {
     localStorage.setItem('characterIds', JSON.stringify(ids)); 
   }
 }
+
+*/
+
+function loadFavoritesFromLocalStorage() {
+  const storedIds = JSON.parse(localStorage.getItem('characterIds')) || [];
+
+  listCharacterFavorite = listCharactersApi.filter((character) =>
+    storedIds.includes(character._id)
+  );
+}
+
+
+
+
+
+
 
 //Filter to search
 function handleClickbtn(event) {
