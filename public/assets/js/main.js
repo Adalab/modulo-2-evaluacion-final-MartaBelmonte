@@ -32,16 +32,12 @@ function renderCharacterList(listData) {
   addEventCharacter(); 
 }
 
+
 //Agregar eventos click a characters y fav characters:
 function addEventCharacter() {
   const divElementList = document.querySelectorAll('.js_character-list'); 
   for (const div of divElementList) {    
     div.addEventListener('click', handleClick);  
-  }
-
-  const favoriteCharacterList = document.querySelectorAll('.js_favorite-character'); 
-  for (const character of favoriteCharacterList) {
-   // character.addEventListener('click', removeFavoriteCharacter);
   }
 }
 
@@ -163,7 +159,6 @@ function handleClickbtn(event) {
 
 //Events
 searchBtn.addEventListener("click", handleClickbtn); 
-
 
 
 //# sourceMappingURL=main.js.map
