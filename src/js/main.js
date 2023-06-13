@@ -39,7 +39,7 @@ function addEventCharacter() {
 
   const favoriteCharacterList = document.querySelectorAll('.js_favorite-character'); // los personajes en la sección favorites
   for (const character of favoriteCharacterList) {
-    character.addEventListener('click', removeFavoriteCharacter);
+   // character.addEventListener('click', removeFavoriteCharacter);
   }
 }
 
@@ -47,12 +47,14 @@ function addEventCharacter() {
 function removeFavoriteCharacter(event) {
   const id = event.currentTarget.id; //guarda el ID cuando se hace click al character
   const indexCharacter = listCharacterFavorite.findIndex((item) => item._id === parseInt(id)); //busca la posición del ch que tiene el mismo ID que el ch seleccionado.
-
+console.log('hola');
+console.log(id);
+console.log(indexCharacter);
   if (indexCharacter !== -1) { //si no da -1 (se ha encontrado el ch)
     listCharacterFavorite.splice(indexCharacter, 1); //elimina el ch de la listCh segun lo que encuentres antes.
     event.currentTarget.remove(); //elimina el personaje de la sección de fav.
-    removeCharacterFromFavorites(id); //llama a la funcion y le pasa el ID del eliminado de la sección de favs.
-
+    checkIfFavoriteIsEmpty(id); //llama a la funcion y le pasa el ID del eliminado de la sección de favs.
+console.log('adeu');
     const originalCharacter = document.getElementById(id);
     if (originalCharacter) {    //si se encuentra elemento original se quita el resaltado de estilos
       originalCharacter.classList.remove('favorite');
@@ -100,9 +102,11 @@ function handleClick(event) {
     event.currentTarget.classList.add('favorite');  //agrega la clase "favorite" al elemento HTML en q se hizo click
     moveCharacterToFavorites(event.currentTarget); // Mover el personaje al contenedor de favoritos
   } else {
+    console.log(listCharacterFavorite);
     listCharacterFavorite.splice(indexCharacter, 1); //se elimina el personaje de la lista fav
+    console.log(listCharacterFavorite);
     event.currentTarget.classList.remove('favorite');  //se elimina la clase "favorite"
-    removeCharacterFromFavorites(id); // Eliminar el personaje del contenedor de favoritos
+    checkIfFavoriteIsEmpty(id); // Eliminar el personaje del contenedor de favoritos
   }
 
   renderFavoriteCharacter();
@@ -118,16 +122,18 @@ function moveCharacterToFavorites(characterElement) {
   characterElement.dataset.originalId = characterId; // Guardar una referencia al personaje original en un atributo personalizado
 
   selectedFavList.appendChild(selectedCharacterCopy);
+  selectedCharacterCopy.addEventListener('click', removeFavoriteCharacter);
 
   // Mostrar la sección de favoritos
-  const favoritesSection = document.querySelector('.js_favorites-section');
+  let favoritesSection = document.querySelector('.js_favorites-section');
   favoritesSection.classList.remove('hidden-section');
 }
 
 // Si la sección de favoritos está vacía: ocultarla 
-function removeCharacterFromFavorites(id) {
-  const favoriteCharacters = favoritesSection.querySelectorAll('.js_favorite-character');
-  
+function checkIfFavoriteIsEmpty() { 
+  let favoritesSection = document.querySelector('.js_favorites-section');
+  const favoriteCharacters = favoritesSection.querySelectorAll('.js_selected-favlist');
+console.log(favoriteCharacters);
   if (favoriteCharacters.length === 0) {
     favoritesSection.classList.add('hidden-section');
   }
