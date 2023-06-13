@@ -60,9 +60,9 @@ function removeFavoriteCharacter(event) {
   }
 }
 
-
+//Pintar al HTML el character
 function renderCharacter(character) { 
-  const isFavorite = listCharacterFavorite.some((item) => item._id === character._id); //id del item = id del character, se cumple la condicion (true)
+  const isFavorite = listCharacterFavorite.some((item) => item._id === character._id); //id del item (el que envio al iterar) = id del character, se cumple la condicion (true)
   const favoriteClass = isFavorite ? 'favorite' : '';  //condición ? expresion1(true)class'favorite' : expresion2(false)
   const html = `
     <div class="characters js_character-list ${favoriteClass}" id="${character._id}">
@@ -108,6 +108,7 @@ function handleClick(event) {
   renderFavoriteCharacter();
 }
 
+//Mover character a sección fav
 function moveCharacterToFavorites(characterElement) {
   const selectedFavList = document.querySelector('.js_selected-favlist');
   const selectedCharacterCopy = characterElement.cloneNode(true);
