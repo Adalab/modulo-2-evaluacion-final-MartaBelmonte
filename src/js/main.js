@@ -7,6 +7,7 @@ const url = 'https://api.disneyapi.dev/character?pageSize=50';
 const ulFavorites = document.querySelector('.js_ul_favlist');
 const searchBox = document.querySelector(".js-search-box");
 const searchBtn = document.querySelector(".js-search-button");
+const logBtn = document.querySelector('.js-btn-log');
 
 
 //Solicitud al servidor 
@@ -65,6 +66,7 @@ function renderCharacter(character) {
   const html = `
     <div class="characters js_character-list ${favoriteClass}" id="${character._id}">
       <p>Name: ${character.name}</p>
+      <p>${character.updatedAt}</p>
       <img src="${character.imageUrl}" alt="${character.name}" />
     </div>
   `;
@@ -157,6 +159,17 @@ function handleClickbtn(event) {
   renderCharacterList(characterFilter);
 }
 
+function handleClickLog (ev) {
+  ev.preventDefault();
+  for (const favCharacter of listCharacterFavorite) {
+    console.log(favCharacter.name);
+  }
+  const lengfav = listCharacterFavorite.length;
+  console.log(lengfav);
+}
+
+
 //Events
 searchBtn.addEventListener("click", handleClickbtn); 
+logBtn.addEventListener("click", handleClickLog);
 
